@@ -1,0 +1,38 @@
+---
+- name: Deploy docker-ce
+  hosts: docker_hosts_stg
+  become: yes
+
+  vars:
+    docker_user: devopsuser
+
+  tasks:
+    - name: Installed required packages
+      yum:
+        name: 
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+    
+    - name: Add docker CE repository
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install Docker CE
+      yum:
+        name: docker-ce
+        state: latest
+
+    - name: Start and Enable docker-ce
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    
+    - name: Add target user to docker group
+      user:
+        name: "{{ docker_user }}"
+        groups: docker
+        append: yes
