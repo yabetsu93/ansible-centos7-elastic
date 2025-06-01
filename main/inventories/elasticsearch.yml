@@ -1,0 +1,5 @@
+---
+- name: Deploy elasticsearch
+  become: yes
+  tasks:
+    - import_tasks: elasticsearch/tasks/main.yml

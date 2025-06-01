@@ -8,4 +8,3 @@ elasticsearch:
   elasticsearch_version: "8.17.0"
   elasticsearch_cluster_name: "stg-es-cluster"
   elasticsearch_data_dir: "/data/esi/es"
-

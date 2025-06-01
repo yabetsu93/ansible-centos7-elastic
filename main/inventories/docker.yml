@@ -1,0 +1,5 @@
+---
+- name: Deploy docker
+  include_tasks: "ansible/docker/main/tasks.yml"
+  vars:
+    docker_user: devopsuser

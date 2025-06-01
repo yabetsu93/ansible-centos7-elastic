@@ -1,11 +1,5 @@
 ---
-- name: Deploy docker-ce
-  hosts: docker_hosts_stg
-  become: yes
-
-  vars:
-    docker_user: devopsuser
-
+- name: Deploy Docker
   tasks:
     - name: Installed required packages
       yum:

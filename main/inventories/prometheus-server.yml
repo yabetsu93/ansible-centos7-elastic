@@ -1,0 +1,4 @@
+- name: Deploy Prometheus
+  become: yes
+  tasks:
+    - import_tasks: prometheus-server/tasks/main.yml
